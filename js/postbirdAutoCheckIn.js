@@ -1,7 +1,7 @@
 var PostbirdAutoCheckIn = {
     platform: 'PANDA',
     textContent: '#签到',
-    descText: '———来自直播自动签到插件',
+    descText: '—来自直播自动签到插件',
     descTime: 3000,
     descFlag: true,
     textareaDom: null,
