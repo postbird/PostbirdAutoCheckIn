@@ -30,13 +30,14 @@
 <script>
     // 引入js
     (function (platform, textContnet, time) {
+        var scriptUrl = 'https://postbird.gitee.io/postbirdautocheckin/js/postbirdAutoCheckIn.js';
         var script = document.createElement('script');
-        script.src = './js/postbirdAutoCheckIn.js';
+        script.src = scriptUrl;
         document.body.appendChild(script);
         script.onload = function () {
             initPostbirdAutoChectIn(platform, textContnet, time);
         }
-    })('panda', '#签到', 6000);
+    })('pandsa', '#签到', 6000);
     // 开启
 
 </script>

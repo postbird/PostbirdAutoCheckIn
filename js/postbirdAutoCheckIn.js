@@ -1,7 +1,7 @@
 var PostbirdAutoCheckIn = {
     platform: 'PANDA',
     textContent: '#签到',
-    descText: '来自直播自动签到插件',
+    descText: '———来自直播自动签到插件',
     descTime: 3000,
     descFlag: true,
     textareaDom: null,
@@ -18,6 +18,11 @@ var PostbirdAutoCheckIn = {
         this.platform = this.platform.toUpperCase();
         this.textContent = options.textContent || this.textContent;
         this.time = options.time || this.time;
+        if(!this.domSelector[this.platform]){
+            var errMsg = '平台未支持或输入错误,请重试';
+            alert(errMsg);
+            throw new Error(errMsg);
+        }
         this.textareaDom = document.querySelector(this.domSelector[this.platform].textarea);
         this.btnDom = document.querySelector(this.domSelector[this.platform].sendbtn);
         this.verify(); // 校验
