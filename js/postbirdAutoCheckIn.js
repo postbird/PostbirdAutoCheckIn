@@ -19,7 +19,7 @@ var PostbirdAutoCheckIn = {
         this.textContent = options.textContent || this.textContent;
         this.time = options.time || this.time;
         if(!this.domSelector[this.platform]){
-            var errMsg = '平台未支持或输入错误,请重试';
+            var errMsg = '平台未支持或平台输入错误,请重试';
             alert(errMsg);
             throw new Error(errMsg);
         }
