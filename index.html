@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>直播影视-自动签到插件-by Postbird</title>
+    <style>
+        .room-chat-send {
+            border: solid 1px #cccccc;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="room-chat-sender">
+        <div class="room-chat-inputfield">
+            <div class="room-chat-texta-person-permission"></div>
+            <textarea class="room-chat-texta"></textarea>
+            <div class="room-chat-texta-placeholder">快和大家一起聊天吧~~</div>
+        </div>
+        <div class="room-chat-send" data-default-text="发送" onclick="{console.log('触发click' + new Date());}">发送</div>
+    </div>
+</body>
+<script>
+    // 引入js
+    (function (platform, textContnet, time) {
+        var script = document.createElement('script');
+        script.src = './js/postbirdAutoCheckIn.js';
+        document.body.appendChild(script);
+        script.onload = function () {
+            initPostbirdAutoChectIn(platform, textContnet, time);
+        }
+    })('panda', '#签到', 6000);
+    // 开启
+
+</script>
+
+</html>
