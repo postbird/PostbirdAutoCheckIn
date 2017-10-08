@@ -6,39 +6,348 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>直播影视-自动签到插件-by Postbird</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         .room-chat-send {
             border: solid 1px #cccccc;
             width: 100px;
             height: 50px;
-            text-align: center;
-            vertical-align: middle;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .room-chat-send span {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .no-padding {
+            padding: 0;
+        }
+
+        .jumbotron {
+            border-radius: 0;
+        }
+
+        blockquote {
+            color: #04c073;
+            font-size: 16px;
+        }
+
+        .check-in-log-list {
+            border: 1px solid #04c073;
+            height: 200px;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        .well {
+            border-radius: 0;
+        }
+
+        #codeWell {
+            width: 100%;
+            resize: none;
+            height: 100px;
+        }
+
+        img {
+            margin: 10px;
+        }
+        footer {
+            font-size: 16px;
+        }
+        a{
+            color:#04c073;
+            padding:15px;
         }
     </style>
 </head>
 
 <body>
-    <div class="room-chat-sender">
-        <div class="room-chat-inputfield">
-            <div class="room-chat-texta-person-permission"></div>
-            <textarea class="room-chat-texta"></textarea>
-            <div class="room-chat-texta-placeholder">快和大家一起聊天吧~~</div>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron col-md-12">
+                <div class="col-md-3">
+                    <img src="./images/logoko.png" alt="Logo" width="200px">
+                </div>
+                <div class="col-md-9">
+                    <h2>PostbirdAutoCheckIn - <small>直播平台弹幕自动签到插件</small></h2>
+                    <p class="pull-right"> <small>Powered by Postbird</small></p>
+                </div>
+            </div>
         </div>
-        <div class="room-chat-send" data-default-text="发送" onclick="{console.log('触发click' + new Date());}">发送</div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">首页</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">生成插件</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">操作说明</a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">更新记录</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h2>签到效果 <small>熊猫直播平台</small></h2>
+                                </div>
+                                <div class="room-chat-sender col-md-6">
+                                    <div class="col-md-12">
+                                        <blockquote>每6秒签到一次,命令 [ #签到 ]</blockquote>
+                                    </div>
+                                    <div class="room-chat-inputfield col-md-5 no-padding">
+                                        <textarea class="room-chat-texta" style="width:100%;height:50px;resize:none;"></textarea>
+                                    </div>
+                                    <div class="room-chat-send col-md-1 no-padding" data-default-text="发送" onclick="{console.log('触发click' + new Date());}">
+                                        <span>发送</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>签到记录：</p>
+                                    <div class="col-md-12 no-padding check-in-log-list">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h2>使用说明：</h2>
+                                </div>
+                                <div class="col-md-12 no-padding">
+                                    <ul>
+                                        <li>
+                                            <h4>在线生成插件代码</h4>
+                                        </li>
+                                        <li>
+                                            <h4>打开浏览器直播页面</h4>
+                                        </li>
+                                        <li>
+                                            <h4>打开开发者面板</h4>
+                                        </li>
+                                        <li>
+                                            <h4>选择 conosle</h4>
+                                        </li>
+                                        <li>
+                                            <h4>复制插件代码</h4>
+                                        </li>
+                                        <li>
+                                            <h4>关闭开发者面板即可</h4>
+                                        </li>
+                                    </ul>
+                                    <h4 style="margin-top:30px;">具体查看：【 <strong>生成插件</strong> 】 和 【 <strong>操作说明</strong> 】</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h2>注意事项：</h2>
+                                </div>
+                                <div class="col-md-12 no-padding">
+                                    <ul>
+                                        <li>
+                                            <h4 class="text-danger">代码复制回车后，请勿刷新页面，刷新页面后自动签到失效</h4>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h2>在线生成插件代码 <small></small></h2>
+                                </div>
+                                <div>
+                                    <blockquote>
+                                        <p>签到间隔建议使用默认 10min，保证签到成功率</p>
+                                        <p>签到命令输入完整的命令，如： #签到、#打卡 等</p>
+                                    </blockquote>
+                                </div>
+                                <div class=" col-md-6 no-padding">
+                                    <div class="form-group col-md-12 no-padding">
+                                        <label for="platforminput" class="col-md-4">选择平台:</label>
+                                        <div class="col-md-8">
+                                            <select name="platform" id="platforminput" class="form-control">
+                                                        <option value="PANDA">熊猫直播</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12 no-padding">
+                                        <label for="minglinginput" class="col-md-4">签到命令:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="mingling" id="minglinginput" class="form-control" placeholder="输入弹幕签到命令,如 #签到">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12 no-padding">
+                                        <label for="timeinput" class="col-md-4">签到间隔:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="timeinput" id="timeinput" class="form-control" placeholder="单位分钟, 默认 10 min, 建议默认">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12 ">
+                                        <button class="btn btn-primary pull-right" type="button" onclick="getCode()">生成代码</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>代码框：<small>代码生成后，复制文本框中的所有内容</small></h4>
+                                    <textarea name="" id="codeWell"></textarea>
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h2>一、生成代码</h2>
+                                </div>
+                                <div class="col-md-12 no-padding">
+                                    <ul>
+                                        <li>
+                                            <p>点击【生成插件】,选择平台及输入签到命令,生成代码，并复制代码</p>
+                                        </li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <img src="./images/step1.png" alt="step1" width="700px" class="img-thumbnail">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h2>二、打开直播间页面</h2>
+                                </div>
+                                <div class="col-md-12 no-padding">
+                                    <ul>
+                                        <li>
+                                            <p>以熊猫某直播间举例，使用浏览器 chrome .</p>
+                                        </li>
+                                        <li>
+                                            <p>按键盘【<strong>F12</strong>】,弹出开发者面板（也可以鼠标右键，选择检查元素）</p>
+                                        </li>
+                                        <li>
+                                            <p>选择开发者面板中的【<strong>console</strong>】选项，可以先清空面板（见截图）</p>
+                                        </li>
+                                        <li>
+                                            <p>将第一步中生成的代码复制到 console 面板中（代码只有一行，复制即可），复制后按下回车</p>
+                                        </li>
+                                        <li>
+                                            <p>复制完成后，关闭 console 面板即可。（开发者面板中，右上角有关闭按钮）</p>
+                                        </li>
+                                        <li>
+                                            <p class="text-danger">不同的浏览器，样式不同，但是原理都一样。</p>
+                                        </li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <img src="./images/step2.png" alt="step2" class="img-thumbnail">
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="./images/step2-1.jpg" alt="step2" class="img-thumbnail">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h2>三、其他浏览器截图</h2>
+                                </div>
+                                <div class="col-md-12 no-padding">
+                                    <ul>
+                                        <li>
+                                            <p>360安全浏览器</p>
+                                        </li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <img src="./images/step3.png" alt="step3" class="img-thumbnail">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="settings">
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h2>更新记录</h2>
+                                </div>
+                                <div class="col-md-12 no-padding">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span>实现在线插件代码生成</span>
+                                            <span class="pull-right">2017-10-08</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer -->
+                    <footer>
+                        <div class="col-md-12" style="margin-top:100px;">
+                            <hr>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            Powered by <a href="http://www.ptbird.cn" target="_blank">Postbird - www.ptbird.cn</a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
     </div>
+
 </body>
 <script>
-    // 引入js
-    (function (platform, textContnet, time) {
-        var scriptUrl = 'https://postbird.gitee.io/postbirdautocheckin/js/postbirdAutoCheckIn.js';
-        var script = document.createElement('script');
-        script.src = scriptUrl;
-        document.body.appendChild(script);
-        script.onload = function () {
-            initPostbirdAutoChectIn(platform, textContnet, time);
+    window.onload = function () {
+        // 引入js
+        (function (platform, textContnet, time) {
+            var scriptUrl = 'https://postbird.gitee.io/postbirdautocheckin/js/postbirdAutoCheckIn.min.js';
+            // var scriptUrl = './js/postbirdAutoCheckIn.min.js';
+            var script = document.createElement('script');
+            script.src = scriptUrl;
+            document.body.appendChild(script);
+            script.onload = function () {
+                initPostbirdAutoChectInLog(platform, textContnet, time);
+            }
+        })('panda', '#签到', 6000);
+        // 开启
+    }
+
+</script>
+<script>
+    // 得到代码
+    function getCode() {
+        var platform = $('#platforminput').val().trim();
+        var mingling = $('#minglinginput').val().trim();
+        if (mingling.length === 0) {
+            alert('请输入签到命令'); return false;
         }
-    })('panda', '#签到', 6000);
-    // 开启
+        var time = 6000;
+        var scriptUrl = 'https://postbird.gitee.io/postbirdautocheckin/js/postbirdAutoCheckIn.min.js';
+        // var scriptUrl = './js/postbirdAutoCheckIn.min.js'
+        var str = "" +
+            "(function (p, te, t) {" +
+            "var s = document.createElement('script');" +
+            "s.src = '" + scriptUrl + "';" +
+            "document.body.appendChild(s);" +
+            " s.onload = function () {" +
+            "    initPostbirdAutoChectIn(p, te, t);" +
+            " }" +
+            " })('" + platform + "', '" + mingling + "', " + time + ");";
+        var codeBox = $("#codeWell").text(str);
+    }
 
 </script>
 
