@@ -1,3 +1,6 @@
+
+![logo](./images/logoko.png)
+
 # PostbirdAutoCheckIn
 
 > 直播平台弹幕自动签到工具
